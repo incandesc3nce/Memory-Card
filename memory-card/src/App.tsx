@@ -1,21 +1,19 @@
-import './App.css';
-import { useState, useEffect } from 'react';
+import './AppStyle.scss';
+import { useState } from 'react';
+import Header from './components/Header/Header';
 import CardGrid from './components/CardGrid/CardGrid';
-import CAT_URL from './const/CAT_URL';
-import ICatData from './interfaces/CatData/ICatData';
-import { useFetch } from './hooks/useFetch/useFetch';
 
 function App() {
-  const [data, setData] = useState<ICatData[]>([]);
-  const fetchedData: ICatData[] = useFetch<ICatData>(CAT_URL);
-
-  useEffect(() => {
-    setData(fetchedData);
-  }, [fetchedData]);
+  const [currentScore, setCurrentScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+  
   return (
     <>
+    <div className='header-wrapper'>
+      <Header currentScore={currentScore} highScore={highScore} />
+    </div>
       <div className="grid-wrapper">
-        <CardGrid data={data} />
+        <CardGrid />
       </div>
     </>
   );
