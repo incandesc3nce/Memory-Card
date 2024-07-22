@@ -1,4 +1,5 @@
 import ICatData from '../../interfaces/CatData/ICatData';
+import './CardStyle.scss';
 
 const Card = ({ cat, onClick }: { cat: ICatData; onClick: (catId: string) => void }) => {
   const imageUrl = cat.url;
