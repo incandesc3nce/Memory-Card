@@ -5,7 +5,12 @@ const Card = ({ cat, onClick }: { cat: ICatData; onClick: (catId: string) => voi
   const imageUrl = cat.url;
 
   return (
-    <button className="card" onClick={() => onClick}>
+    <button
+      className="card"
+      onClick={() => {
+        onClick(cat.id);
+      }}
+    >
       <img src={imageUrl} alt="cat" />
     </button>
   );
