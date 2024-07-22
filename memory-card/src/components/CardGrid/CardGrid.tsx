@@ -6,7 +6,12 @@ import CAT_URL from '../../const/CAT_URL';
 import { useFetch } from '../../hooks/useFetch/useFetch';
 import shuffleCards from './shuffleCards';
 
-const CardGrid = () => {
+type CardGridProps = {
+  currentScore: number;
+  setCurrentScore: React.Dispatch<React.SetStateAction<number>>;
+};
+
+const CardGrid = ({ currentScore, setCurrentScore }: CardGridProps) => {
   const [cards, setCards] = useState<ICatData[]>([]);
   const fetchedData: ICatData[] = useFetch<ICatData>(CAT_URL);
 
@@ -19,6 +24,10 @@ const CardGrid = () => {
   const handleClick = ({ catId: catId }: { catId: string }) => {
     if (!clickedCards.includes(catId)) {
       setClickedCards([...clickedCards, catId]);
+      setCurrentScore(currentScore + 1);
+    } else {
+      setCurrentScore(0);
+      setClickedCards([]);
     }
     setCards(shuffleCards(cards));
   };
