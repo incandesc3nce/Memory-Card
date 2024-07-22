@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import ICatData from '../../interfaces/CatData/ICatData';
 
-export const useFetch = (url: string) => {
-  const [data, setData] = useState([] as ICatData[]);
+export const useFetch = <T>(url: string) => {
+  const [data, setData] = useState<T[]>([]);
 
   useEffect(() => {
     fetch(url)
