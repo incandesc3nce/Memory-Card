@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './CardGridStyle.scss';
 import Card from '../Card/Card';
 import ICatData from '../../interfaces/CatData/ICatData';
 
